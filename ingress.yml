@@ -1,0 +1,28 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: orient-ingress
+  labels:
+    app: orient-ingress
+  annotations:
+    alb.ingress.kubernetes.io/scheme: internet-facing
+    alb.ingress.kubernetes.io/target-type: ip
+spec:
+  ingressClassName: alb
+  rules:
+    - http:
+        paths:
+          - path: /a
+            pathType: Prefix
+            backend:
+              service:
+                name: <service-a>
+                port:
+                  number: 8080
+          - path: /b
+            pathType: Prefix
+            backend:
+              service:
+                name: <service-b>
+                port:
+                  number: 8080
