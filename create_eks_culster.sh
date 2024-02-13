@@ -1,0 +1,1 @@
+eksctl create cluster --name orient --node-type t2.xlarge --nodes 2
